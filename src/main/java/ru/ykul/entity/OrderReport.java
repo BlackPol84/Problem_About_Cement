@@ -1,11 +1,14 @@
-package ru.ykul.service;
+package ru.ykul.entity;
 
 import java.util.Map;
 
 public class OrderReport {
+
     private Map<String, Integer> orderReport;
+
     public OrderReport() {
     }
+
     public Map<String, Integer> getOrderReport() {
         return orderReport;
     }

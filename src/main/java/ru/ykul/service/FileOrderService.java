@@ -1,5 +1,7 @@
 package ru.ykul.service;
 
+import ru.ykul.entity.OrderReport;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +11,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class FileOrderService {
+
     private final static String PATH = FileOrderService.class.getResource("/storage/").getPath();
-    public List<String> readingFile(String inPutFile) {
+
+    public List<String> readFile(String inPutFile) {
         String line;
         List<String> stringOrders = new ArrayList<>();
 
@@ -23,9 +27,9 @@ public class FileOrderService {
         }
         return stringOrders;
     }
+
     public void recordOrder(OrderReport orderReport, String outPutFile) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATH + outPutFile))) {
-            //try (BufferedWriter writer = new BufferedWriter(new FileWriter(outPutFile))) {
             writer.write(orderReport.toString());
         } catch (IOException e) {
             throw new RuntimeException(e);

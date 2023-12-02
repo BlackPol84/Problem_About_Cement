@@ -1,10 +1,13 @@
-package ru.ykul.service;
+package ru.ykul.adapter;
+
+import ru.ykul.entity.Order;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileOrderAdapter {
+public class FileNonTypeOrderAdapter implements OrderAdapter {
+    @Override
     public List<Order> parseOrder (List<String> stringOrders) {
         List<Order> orders = new ArrayList<>();
 
@@ -13,8 +16,9 @@ public class FileOrderAdapter {
         }
         return orders;
     }
+
     private Order toOrder(String lineOrder) {
-        String[] orderParts = lineOrder.split("\\|");
+        String[] orderParts = lineOrder.split("\\$");
 
         LocalDateTime orderTime = LocalDateTime.parse(orderParts[0]);
         String company = orderParts[1];

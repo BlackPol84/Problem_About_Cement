@@ -1,16 +1,19 @@
-package ru.ykul.service;
+package ru.ykul.entity;
 
 import java.time.LocalDateTime;
 
 public class Order {
+
     private int amountOfCement;
     private LocalDateTime orderTime;
     private String company;
+
     public Order(LocalDateTime orderTime, String company, int amountOfCement) {
         this.orderTime = orderTime;
         this.company = company;
         this.amountOfCement = amountOfCement;
     }
+
     public LocalDateTime getOrderTime() {
         return orderTime;
     }
