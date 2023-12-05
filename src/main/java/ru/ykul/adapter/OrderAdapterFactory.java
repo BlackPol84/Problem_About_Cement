@@ -1,9 +1,9 @@
 package ru.ykul.adapter;
 
 public class OrderAdapterFactory {
-    public OrderAdapter determineFileType (String inputFile) {
+    public OrderAdapter getOrderAdapter (String inputFile) {
         if(inputFile.indexOf('.') == -1) {
-            return new FileNonTypeOrderAdapter();
+            return new FileNoneTypeOrderAdapter();
         } else {
             return new FileOrderAdapter();
         }

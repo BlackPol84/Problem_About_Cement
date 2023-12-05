@@ -24,7 +24,7 @@ public class OrderManager {
 
     public void saveOrderReport(String inputFile, String outputFile, double discount, double discountDiff) {
         List<String> stringOrders = fileOrderService.readFile(inputFile);
-        OrderAdapter orderAdapter = orderAdapterFactory.determineFileType(inputFile);
+        OrderAdapter orderAdapter = orderAdapterFactory.getOrderAdapter(inputFile);
         List<Order> orders = orderAdapter.parseOrder(stringOrders);
         OrderReport orderReport = orderService.getReport(orders, discount, discountDiff);
         fileOrderService.recordOrder(orderReport, outputFile);

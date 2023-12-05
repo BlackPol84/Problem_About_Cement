@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileNonTypeOrderAdapter implements OrderAdapter {
+public class FileNoneTypeOrderAdapter implements OrderAdapter {
     @Override
     public List<Order> parseOrder (List<String> stringOrders) {
         List<Order> orders = new ArrayList<>();
