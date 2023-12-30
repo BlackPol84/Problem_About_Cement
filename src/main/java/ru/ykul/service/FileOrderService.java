@@ -14,11 +14,11 @@ public class FileOrderService {
 
     private final static String PATH = FileOrderService.class.getResource("/storage/").getPath();
 
-    public List<String> readFile(String inPutFile) {
+    public List<String> readFile(String inputFile) {
         String line;
         List<String> stringOrders = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(PATH + inPutFile))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(PATH + inputFile))) {
             while ((line = reader.readLine()) != null) {
                 stringOrders.add(line);
             }
