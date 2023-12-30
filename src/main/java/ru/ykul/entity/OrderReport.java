@@ -18,9 +18,14 @@ public class OrderReport {
 
     @Override
     public String toString() {
+
+        if(orderReport == null) {
+            return "";
+        }
+
         StringBuilder orderBuilder = new StringBuilder();
-        for(String company : orderReport.keySet()) {
-            orderBuilder.append("<" + company + ">" + " - " + "<" + orderReport.get(company) + ">\n");
+        for(Map.Entry<String, Integer> pairCompanyPrice : orderReport.entrySet()) {
+            orderBuilder.append("<" + pairCompanyPrice.getKey() + ">" + " - " + "<" + pairCompanyPrice.getValue() + ">\n");
         }
         return orderBuilder.toString();
     }
