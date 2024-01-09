@@ -1,4 +1,4 @@
-package ru.ykul;
+package ru.ykul.adapter;
 
 import org.junit.jupiter.api.Test;
 import ru.ykul.adapter.FileNoneTypeOrderAdapter;
@@ -12,26 +12,26 @@ public class OrderAdapterFactoryTest {
     OrderAdapterFactory orderAdapterFactory = new OrderAdapterFactory();
 
     @Test
-    void OrderAdapterFactory_ifInputFileNull_throwIllegalArgumentException() {
+    void getOrderAdapter_ifInputFileNull_throwIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> {
             orderAdapterFactory.getOrderAdapter(null);
         });
     }
 
     @Test
-    void OrderAdapterFactory_ifInputFileIsEmpty_throwIllegalArgumentException() {
+    void getOrderAdapter_ifInputFileEmpty_throwIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> {
             orderAdapterFactory.getOrderAdapter("");
         });
     }
 
     @Test
-    void OrderAdapterFactory_ifInputFileWithExtension_returnFileOrderAdapter() {
+    void getOrderAdapter_ifInputFileWithExtension_returnFileOrderAdapter() {
         assertTrue(orderAdapterFactory.getOrderAdapter("discount_day_test.txt") instanceof FileOrderAdapter);
     }
 
     @Test
-    void OrderAdapterFactory_ifInputFileWithoutExtension_returnFileNoneTypeOrderAdapter() {
+    void getOrderAdapter_ifInputFileWithoutExtension_returnFileNoneTypeOrderAdapter() {
         assertTrue(orderAdapterFactory.getOrderAdapter("discount_day_dollar_test") instanceof FileNoneTypeOrderAdapter);
     }
 }

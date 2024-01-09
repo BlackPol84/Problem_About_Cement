@@ -1,7 +1,6 @@
-package ru.ykul;
+package ru.ykul.service;
 
 import org.junit.jupiter.api.Test;
-import ru.ykul.service.FileOrderService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,7 @@ public class FileOrderServiceTest {
     FileOrderService fileOrderService = new FileOrderService();
 
     @Test
-    void readFile_ifFileEmpty_returnArrayListEmpty() {
+    void readFile_ifContainsEmpty_shouldReturnEmptyArrayList() {
         List<String> stringOrders = new ArrayList<>();
         assertEquals(stringOrders, fileOrderService.readFile("isEmpty_test.txt"));
     }
@@ -24,6 +23,20 @@ public class FileOrderServiceTest {
     void readFile_ifFileNotFound_throwRuntimeException() {
         assertThrows(RuntimeException.class, () -> {
             fileOrderService.readFile("Non-existent file");
+        });
+    }
+
+    @Test
+    void readFile_ifInputFileNull_throwRuntimeException() {
+        assertThrows(RuntimeException.class, () -> {
+            fileOrderService.readFile(null);
+        });
+    }
+
+    @Test
+    void readFile_ifInputFileEmpty_throwRuntimeException() {
+        assertThrows(RuntimeException.class, () -> {
+            fileOrderService.readFile("");
         });
     }
 }

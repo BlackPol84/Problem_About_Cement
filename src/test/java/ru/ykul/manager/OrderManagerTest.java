@@ -1,4 +1,4 @@
-package ru.ykul;
+package ru.ykul.manager;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -37,7 +37,7 @@ public class OrderManagerTest {
     OrderService orderServiceMock;
 
     @Test
-    void orderManager_checkingMethodInvocation() {
+    void saveOrderReport_checkingMethodInvocation() {
 
         List<String> stringOrders = new ArrayList<>();
         stringOrders.add("2021-02-09T16:00:22|Industrial|9000");

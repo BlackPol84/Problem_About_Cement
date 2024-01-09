@@ -20,18 +20,6 @@ public class OrderManager {
         this.orderService = orderService;
     }
 
-    private void validate(String inputFile, String outputFile, double discount, double discountDiff) {
-        if(inputFile == null || inputFile.isEmpty()) {
-            throw new IllegalArgumentException("The file name for reading is set incorrectly");
-        }
-        if(outputFile == null || outputFile.isEmpty()) {
-            throw new IllegalArgumentException("The file name for the record is set incorrectly");
-        }
-        if(discount < 0 || discountDiff < 0) {
-            throw new IllegalArgumentException("The discount cannot be negative");
-        }
-    }
-
     public void saveOrderReport(String inputFile, String outputFile, double discount, double discountDiff) {
 
         validate(inputFile, outputFile, discount, discountDiff);
@@ -44,6 +32,18 @@ public class OrderManager {
             fileOrderService.recordOrder(orderReport, outputFile);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage(), e);
+        }
+    }
+
+    private void validate(String inputFile, String outputFile, double discount, double discountDiff) {
+        if(inputFile == null || inputFile.isEmpty()) {
+            throw new IllegalArgumentException("The file name for reading is set incorrectly");
+        }
+        if(outputFile == null || outputFile.isEmpty()) {
+            throw new IllegalArgumentException("The file name for the record is set incorrectly");
+        }
+        if(discount < 0 || discountDiff < 0) {
+            throw new IllegalArgumentException("The discount cannot be negative");
         }
     }
 }
