@@ -1,0 +1,2 @@
+2021-02-09T16:00:22|Industrial|9000
+2021-02-11T08:42:59|Power Engineer Comp|88000
