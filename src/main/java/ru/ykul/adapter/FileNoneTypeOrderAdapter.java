@@ -5,6 +5,7 @@ import ru.ykul.entity.Order;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FileNoneTypeOrderAdapter implements OrderAdapter {
     @Override
@@ -14,7 +15,7 @@ public class FileNoneTypeOrderAdapter implements OrderAdapter {
         for (String lineOder : stringOrders) {
             orders.add(toOrder(lineOder));
         }
-        return orders;
+        return stringOrders.stream().map(this::toOrder).collect(Collectors.toList());
     }
 
     private Order toOrder(String lineOrder) {
