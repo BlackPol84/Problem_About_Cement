@@ -1,6 +1,7 @@
 package ru.ykul.entity;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class OrderReport {
 
@@ -23,10 +24,8 @@ public class OrderReport {
             return "";
         }
 
-        StringBuilder orderBuilder = new StringBuilder();
-        for(Map.Entry<String, Integer> pairCompanyPrice : orderReport.entrySet()) {
-            orderBuilder.append("<" + pairCompanyPrice.getKey() + ">" + " - " + "<" + pairCompanyPrice.getValue() + ">\n");
-        }
-        return orderBuilder.toString();
+        return orderReport.entrySet().stream().
+                map(e -> "<" + e.getKey() + ">" + " - " + "<" + e.getValue() + ">\n").
+                collect(Collectors.joining());
     }
 }

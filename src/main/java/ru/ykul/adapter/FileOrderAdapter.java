@@ -11,7 +11,9 @@ public class FileOrderAdapter implements OrderAdapter {
     @Override
     public List<Order> parseOrder (List<String> stringOrders) {
 
-        return stringOrders.stream().map(this::toOrder).collect(Collectors.toList());
+        return stringOrders.stream().
+                map(this::toOrder).
+                collect(Collectors.toList());
     }
 
     private Order toOrder(String lineOrder) {

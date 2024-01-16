@@ -10,12 +10,10 @@ import java.util.stream.Collectors;
 public class FileNoneTypeOrderAdapter implements OrderAdapter {
     @Override
     public List<Order> parseOrder (List<String> stringOrders) {
-        List<Order> orders = new ArrayList<>();
 
-        for (String lineOder : stringOrders) {
-            orders.add(toOrder(lineOder));
-        }
-        return stringOrders.stream().map(this::toOrder).collect(Collectors.toList());
+        return stringOrders.stream().
+                map(this::toOrder).
+                collect(Collectors.toList());
     }
 
     private Order toOrder(String lineOrder) {

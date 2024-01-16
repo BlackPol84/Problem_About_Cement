@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 public class FileOrderService {
@@ -16,14 +15,11 @@ public class FileOrderService {
 
     public List<String> readFile(String inputFile) {
 
-        List<String> stringOrders;
-
         try {
-            stringOrders = Files.lines(Path.of(PATH.replaceFirst("^/(.:/)", "$1") + inputFile)).toList();
+            return Files.lines(Path.of(PATH.replaceFirst("^/(.:/)", "$1") + inputFile)).toList();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return stringOrders;
     }
 
     public void recordOrder(OrderReport orderReport, String outPutFile) {
