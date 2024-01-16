@@ -10,6 +10,7 @@ public class OrderService {
     private final int CEMENT_PRICE = 10;
 
     public OrderReport getReport(List<Order> orders, double discount, double discountDiff) {
+
         Map<String, Integer> report = new HashMap<>();
 
         Collections.sort(orders, Comparator.comparing(Order::getOrderTime));

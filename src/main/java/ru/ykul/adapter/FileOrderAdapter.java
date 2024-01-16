@@ -5,16 +5,15 @@ import ru.ykul.entity.Order;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FileOrderAdapter implements OrderAdapter {
     @Override
     public List<Order> parseOrder (List<String> stringOrders) {
-        List<Order> orders = new ArrayList<>();
 
-        for (String lineOder : stringOrders) {
-            orders.add(toOrder(lineOder));
-        }
-        return orders;
+        return stringOrders.stream().
+                map(this::toOrder).
+                collect(Collectors.toList());
     }
 
     private Order toOrder(String lineOrder) {
